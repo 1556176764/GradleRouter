@@ -1,0 +1,66 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+
+    id 'kotlin-kapt'
+    // 应用自定义路由插件
+    id 'com.github.gradlerouter'
+    //id 'kotlin-android-extensions'
+}
+
+router {
+    wikiDir getRootDir().absolutePath
+}
+
+android {
+    namespace 'com.github.gradlerouter'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.github.gradlerouter"
+        minSdk 24
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+       // testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+//    kapt {
+//        arguments {
+//            arg("root_project_dir", rootProject.projectDir.absolutePath)
+//        }
+//    }
+
+}
+
+dependencies {
+
+    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'com.google.android.material:material:1.5.0'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.7.21"
+
+    implementation project(':router-annotations')
+    //若使用了java代码，使用这个
+    annotationProcessor project(':router-processor')
+    //若使用了kotlin代码，使用这个。且须在文件顶部注册 plugins{id 'kotlin-kapt'}
+    kapt project(':router-processor')
+//    implementation 'com.github.gradlerouter:router-annotations:1.0.0'
+//    kapt  'com.github.gradlerouter:router-processor:1.0.0'
+    implementation project(':moudle-reading')
+    implementation project(':router-runtime')
+}

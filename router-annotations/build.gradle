@@ -1,0 +1,10 @@
+//应用java插件
+apply plugin: 'java'
+apply plugin: 'kotlin-kapt'
+
+
+//保证源码兼容性
+targetCompatibility = JavaVersion.VERSION_1_7
+sourceCompatibility = JavaVersion.VERSION_1_7
+
+apply from : rootProject.file("maven-publish.gradle")

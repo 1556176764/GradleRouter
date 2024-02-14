@@ -1,0 +1,100 @@
+//引用groovy插件，编译插件工程中的代码
+apply plugin: 'groovy'
+
+//声明仓库地址
+repositories{
+    jcenter()
+    maven { url 'https://jitpack.io' }
+    maven {
+        url "https://repo.spring.io/release"
+    }
+    maven {
+        url "https://repository.jboss.org/maven2"
+    }
+    maven { url "https://jitpack.io" }
+    maven { url 'https://maven.aliyun.com/repository/releases' }
+//        maven { url 'https://maven.aliyun.com/repository/jcenter' }
+    maven { url 'https://maven.aliyun.com/repository/google' }
+    maven { url 'https://maven.aliyun.com/repository/central' }
+    maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+    maven { url 'https://maven.aliyun.com/repository/public' }
+    google()
+    mavenCentral()
+}
+
+//声明依赖的包
+dependencies {
+    implementation gradleApi()
+    implementation localGroovy()
+    //implementation 'com.android.tools.build:gradle:7.3.0'
+    //implementation 'com.android.tools.build:gradle-api:3.5.0'
+    implementation 'com.android.tools.build:gradle:7.4.0'
+}
+
+//调用maven插件用于发布
+//apply plugin: 'maven-publish'
+//配置maven插件中的uploadArchives任务
+//uploadArchives {
+//    repositories {
+//        mavenDeployer {
+//
+//            // 设置发布路径为 工程根目录下面的 repo 文件夹
+//            repository(url: uri('../repo')) {
+//
+//                // 设置groupId，通常为包名
+//                pom.groupId = 'com.github.gradlerouter'
+//
+//                // 设置artifactId，为当前插件的名称
+//                pom.artifactId = 'router-gradle-plugin'
+//
+//                // 设置 插件的版本号
+//                pom.version = '1.0.0'
+//
+//            }
+//
+//        }
+//    }
+//}
+
+//publishing {
+//    repositories {
+//        maven {
+//            name = 'localRepo'
+//            url = "D:/Project/GradleRouter/repo"
+//        }
+//    }
+//    publications {
+//        myApp(MavenPublication) {
+//            //设置groupId，通常为包名
+//            groupId = 'com.github.gradlerouter'
+//            // 设置artifactId，为当前插件的名称
+//            artifactId = 'router-gradle-plugin'
+//            // 设置 插件的版本号
+//            version = '1.0.0'
+//            from components.java
+//        }
+//    }
+//}
+
+//publishing {
+//    // 配置Plugin GAV
+//    publications {
+//        maven(MavenPublication) {
+//            //设置groupId，通常为包名
+//            groupId = 'com.github.gradlerouter'
+//            // 设置artifactId，为当前插件的名称
+//            artifactId = 'router-gradle-plugin'
+//            // 设置 插件的版本号
+//            version = '1.0.0'
+//
+//            from components.java
+//        }
+//    }
+//    // 配置仓库地址
+//    repositories {
+//        maven {
+//            url layout.buildDirectory.dir("maven-repo")
+//        }
+//    }
+//}
+
